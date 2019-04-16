@@ -1,0 +1,11 @@
+Package: rddsw
+Type: Package
+Title: Regression discontinuity with and without sample weights
+Version: 0.1.0
+Author: Natalia Arteaga and Leonardo Trujillo
+Maintainer: The package maintainer <nxarteagag@unal.edu.co>
+Description: regression discontinuity using the likelihood, pseudolikelihood, local linear and polynomial local estimators
+License: Require library survey
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
