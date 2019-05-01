@@ -15,7 +15,7 @@ kernel_sRD <-function(kernel_,weights,h,X,c){
   }
   if(kernel_=="triangular"){
     W_ <- ifelse(X>=c-h & X<=c+h,ifelse(weights=="null",(1-abs((X-c)/h)),(1-abs((X-c)/h))/(weights)),0)
-  }else{if(kernel_=="epanechnicov"){
+  }else{if(kernel_=="epanechnikov"){
     W_     <- ifelse(X>=c-h & X<=c+h,ifelse(weights=="null",((3/4)*(1-((X-c)/h)^2))/h,((3/4)*(1-((X-c)/h)^2))/(h*weights)),0)
   }else{if(kernel_=="tricube"){
     W_     <- ifelse(X>=c-h & X<=c+h,ifelse(weights=="null",((1-abs((X-c)/h)^3)^3)/h,((1-abs((X-c)/h)^3)^3)/(h*weights)),0)

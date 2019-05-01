@@ -155,7 +155,7 @@ RDker <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
     }
   }}
   seBeta              <- sqrt(var[3,3])
-  significativo       <- ifelse(abs(beta[i]/(seBeta[i]))>=qt(0.975,dim(muestra)[1]-dim(Xm1)[2]),"Significativo","No Significativo")
+  significativo       <- ifelse(abs(beta/(seBeta))>=qt(0.975,dim(muestra)[1]-dim(Xm1)[2]),"Significativo","No Significativo")
   impact              <- data.frame(round(beta,2),round(seBeta,5),pvalue=(1-pt(abs(beta/(seBeta)),df = dim(muestra)[1]-length(impacto.1_2)))*2)
   colnames(impact)    <- c("Impacto","S.E.","P-Value")
   impact$significativo<- ifelse(impact$`P-Value`<0.01,"***",ifelse(impact$`P-Value`<0.05,"**",ifelse(impact$`P-Value`<0.1,"*","")))
