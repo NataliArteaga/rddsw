@@ -1,4 +1,4 @@
-#' @title RDD local regression
+#' @title RDD local regression2
 #' @description no parametric regression discontinuity using local regression estimator with and without sample weights
 #' @param D variable with: 1 for treatment group and 0 for control group
 #' @param Z continuous variable

@@ -1,4 +1,4 @@
-#' @title Kernel function
+#' @title Kernel function2
 #' @description estimation of the kernel function using sample weights
 #' @param kernel_ kernel type: triangular, epanechnikov, tricube, uniform, gaussian y cosine
 #' @param weigths pik, NULL if there aren't sample weights
