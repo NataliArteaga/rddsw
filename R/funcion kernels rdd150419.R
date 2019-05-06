@@ -150,7 +150,7 @@ RDker <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       svydesign_$variables$Uk2<-muestra$Uk2
       svydesign_$variables$Uk3<-muestra$Uk3
       svydesign_$variables$Uk4<-muestra$Uk4
-      varmuestra           <- vcov(svytotal(~Uk1+Uk2+Uk3+Uk4+Uk5+Uk6,svydesign_))
+      varmuestra           <- vcov(svytotal(~Uk1+Uk2+Uk3+Uk4,svydesign_))
       var                  <- (var1)%*%varmuestra%*%(var1)
     }
   }}
