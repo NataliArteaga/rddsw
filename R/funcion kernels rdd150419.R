@@ -33,7 +33,7 @@ RDker <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
   Y        <- muestra$Y
 
   if(!is.null(weights)){
-    W <- kernel_sRD(kernel_=kernel_,weights=muestra$weights,h=h,X=muestra$Z,c=c)
+    W <- kernel_sRD(kernel_=kernel_,weights=1/muestra$weights,h=h,X=muestra$Z,c=c)
   }else{
     W <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
   }
