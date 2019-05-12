@@ -95,6 +95,7 @@ var1             <- solve(t(Xm1)%*%W%*%Xm1)# revisar si dejo o pongo sigma2
 muestra$ek2     <- (muestra$Y-Xm1%*%impacto.1_2)
 diag(M)         <- muestra$ek2
 mat <- matrix(0,dim(Xm1)[1],dim(Xm1)[1])
+
 if(vcov_=="HC0"){
 diag(mat) <- 1
 }else{if(vcov_=="HC1"){

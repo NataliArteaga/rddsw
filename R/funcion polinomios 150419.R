@@ -112,7 +112,7 @@ RDpol <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
         diag(mat) <- (dim(Xm1)[1]/(dim(Xm1)[1]-length(impacto.1_2)))
       }}
 
-      svydesign_$variables$uk <- mat%*%M%*%t(W)%*%Xm1
+      svydesign_$variables$uk <- mat%*%M%*%Xm1
       varmuestra           <- vcov(svytotal(~uk,svydesign_))
       var                  <- (var1)%*%varmuestra%*%(var1)
     }
@@ -145,7 +145,7 @@ RDpol <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       }else{if(vcov_=="HC1"){
         diag(mat) <- (dim(Xm1)[1]/(dim(Xm1)[1]-length(impacto.1_2)))
       }}
-      svydesign_$variables$uk <- mat%*%M%*%t(W)%*%Xm1
+      svydesign_$variables$uk <- mat%*%M%*%Xm1
       varmuestra              <- vcov(svytotal(~uk,svydesign_))
       var                     <- (var1)%*%varmuestra%*%(var1)
     }
