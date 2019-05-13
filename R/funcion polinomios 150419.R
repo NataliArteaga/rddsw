@@ -34,7 +34,7 @@ RDpol <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
   Y        <- muestra$Y
 
   if(!is.null(weights)){
-    W <- kernel_sRD(kernel_=kernel_,weights=muestra$weights,h=h,X=muestra$Z,c=c)
+    W <- kernel_sRD(kernel_=kernel_,weights=1/muestra$weights,h=h,X=muestra$Z,c=c)
   }else{
     W <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
   }
@@ -111,8 +111,8 @@ RDpol <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       }else{if(vcov_=="HC1"){
         diag(mat) <- (dim(Xm1)[1]/(dim(Xm1)[1]-length(impacto.1_2)))
       }}
-
-      svydesign_$variables$uk <- mat%*%M%*%Xm1
+      W2 <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
+      svydesign_$variables$uk <- mat%*%M%*%t(W2)%*%Xm1
       varmuestra           <- vcov(svytotal(~uk,svydesign_))
       var                  <- (var1)%*%varmuestra%*%(var1)
     }
@@ -145,7 +145,8 @@ RDpol <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       }else{if(vcov_=="HC1"){
         diag(mat) <- (dim(Xm1)[1]/(dim(Xm1)[1]-length(impacto.1_2)))
       }}
-      svydesign_$variables$uk <- mat%*%M%*%Xm1
+      W2 <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
+      svydesign_$variables$uk <- mat%*%M%*%t(W2)%*%Xm1
       varmuestra              <- vcov(svytotal(~uk,svydesign_))
       var                     <- (var1)%*%varmuestra%*%(var1)
     }

@@ -100,8 +100,9 @@ RDker <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       }else{if(vcov_=="HC3"){
         diag(mat) <- 1/((1-diag(Xm1%*%solve(t(Xm1)%*%Xm1)%*%t(Xm1)))^2)
       }}}}
+      W2 <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
       for(i in 1:dim(Xm1)[2]){
-        muestra[,c(paste0("Uk",i))] <- (mat%*%M%*%Xm1[,i])
+        muestra[,c(paste0("Uk",i))] <- (mat%*%M%*%t(W2)%*%Xm1[,i])
       }
       svydesign_$variables$Uk1<-muestra$Uk1
       svydesign_$variables$Uk2<-muestra$Uk2
@@ -144,8 +145,9 @@ RDker <- function(D = muestra1$D, Z = muestra1$x, Y = muestra1$y,c =0,type="shar
       }else{if(vcov_=="HC3"){
         diag(mat) <- 1/((1-diag(Xm1%*%solve(t(Xm1)%*%Xm1)%*%t(Xm1)))^2)
       }}}}
+      W2 <- kernel_sRD(kernel_=kernel_,weights=NULL,h=h,X=muestra$Z,c=c)
       for(i in 1:dim(Xm1)[2]){
-        muestra[,c(paste0("Uk",i))] <- mat%*%M%*%Xm1[,i]
+        muestra[,c(paste0("Uk",i))] <- mat%*%M%*%t(W2)%*%Xm1[,i]
       }
       svydesign_$variables$Uk1<-muestra$Uk1
       svydesign_$variables$Uk2<-muestra$Uk2
